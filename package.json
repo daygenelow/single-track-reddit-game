@@ -21,7 +21,7 @@
                     "build:css":  "tailwindcss -i src/client/index.css -o public/index.css"
                 },
     "devDependencies":  {
-                            "@biomejs/biome":  "2.6.6",
+                            "@biomejs/biome":  "2.6.9",
                             "@devvit/web":  "0.15.6",
                             "@tailwindcss/cli":  "^4.3.5",
                             "@types/express":  "^5.0.6",
