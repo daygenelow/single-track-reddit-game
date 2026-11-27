@@ -1,0 +1,44 @@
+{
+    "private":  true,
+    "name":  "single-track-daily-g",
+    "version":  "0.0.0",
+    "license":  "BSD-3-Clause",
+    "type":  "module",
+    "scripts":  {
+                    "build":  "npm run build:client -- --metafile=dist/client.meta.json --minify \u0026\u0026 npm run build:css -- --minify \u0026\u0026 npm run build:server -- --metafile=dist/server.meta.json --minify",
+                    "build:client":  "esbuild --bundle --log-level=warning --sourcemap=linked --target=es2023 --format=esm --outdir=public --platform=browser src/client/splash.ts src/client/game.ts",
+                    "build:server":  "esbuild --bundle --log-level=warning --sourcemap=linked --target=es2023 --format=cjs --outdir=dist/server --platform=node src/server/index.ts",
+                    "clean":  "rm -rf dist/ public/*.js* public/index.css",
+                    "format":  "npm run lint -- --fix",
+                    "lint":  "biome check --error-on-warnings",
+                    "playtest":  "devvit playtest",
+                    "test":  "npm run test:types \u0026\u0026 npm run lint \u0026\u0026 npm run test:unit \u0026\u0026 npm run build",
+                    "test:types":  "tsc --build",
+                    "test:unit":  "node --experimental-strip-types --no-warnings=ExperimentalWarning --test src/**/*.test.ts",
+                    "publish":  "npm run clean \u0026\u0026 npm run build \u0026\u0026 devvit publish",
+                    "watch":  "sh -c \u0027trap \"kill 0\" exit; npm run build:client -- --watch=forever\u0026 npm run build:css -- --watch\u0026 npm run build:server -- --watch=forever\u0026 wait\u0027 --",
+                    "dev":  "devvit playtest",
+                    "build:css":  "tailwindcss -i src/client/index.css -o public/index.css"
+                },
+    "devDependencies":  {
+                            "@biomejs/biome":  "2.6.6",
+                            "@devvit/web":  "0.15.6",
+                            "@tailwindcss/cli":  "^4.3.5",
+                            "@types/express":  "^5.0.6",
+                            "@types/node":  "24.19.2",
+                            "@types/react":  "^19.3.3",
+                            "@types/react-dom":  "^19.3.0",
+                            "devvit":  "0.15.6",
+                            "esbuild":  "0.28.2",
+                            "tailwindcss":  "^4.3.5",
+                            "typescript":  "7.0.2"
+                        },
+    "engines":  {
+                    "node":  "\u003e=24.0.0"
+                },
+    "dependencies":  {
+                         "express":  "^5.3.0",
+                         "react":  "^19.3.1",
+                         "react-dom":  "^19.3.1"
+                     }
+}
