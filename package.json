@@ -25,7 +25,7 @@
                             "@devvit/web":  "0.15.6",
                             "@tailwindcss/cli":  "^4.3.5",
                             "@types/express":  "^5.0.6",
-                            "@types/node":  "24.19.2",
+                            "@types/node":  "24.19.4",
                             "@types/react":  "^19.3.3",
                             "@types/react-dom":  "^19.3.0",
                             "devvit":  "0.15.6",
